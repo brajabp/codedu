@@ -1,0 +1,75 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "divisionId",
+            "otherEntityName": "division",
+            "otherEntityRelationshipName": "organizationId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "paymentId",
+            "otherEntityName": "payment",
+            "otherEntityRelationshipName": "organizationId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "enquiryId",
+            "otherEntityName": "enquiry",
+            "otherEntityRelationshipName": "organizationId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "courseId",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "organizationId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "studentId",
+            "otherEntityName": "student",
+            "otherEntityRelationshipName": "organizationId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "employeeId",
+            "otherEntityName": "employee",
+            "otherEntityRelationshipName": "organizationId"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "ACTIVE,INACTIVE"
+        },
+        {
+            "fieldName": "accountStatus",
+            "fieldType": "AccountStatus",
+            "fieldValues": "PENDING,SUBSCRIBED,UNSUBSCRIBED"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "modDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "changelogDate": "20180323025512",
+    "entityTableName": "organization",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "bli"
+}

@@ -1,0 +1,69 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "scheduleId",
+            "otherEntityName": "schedule",
+            "otherEntityRelationshipName": "batchId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "enrollId",
+            "otherEntityName": "enroll",
+            "otherEntityRelationshipName": "batchId"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "subjectId",
+            "otherEntityName": "subject",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "studentId",
+            "otherEntityName": "student",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "employeeId",
+            "otherEntityName": "employee",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "ACTIVE,INACTIVE"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "modDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sudentCapacity",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180323025522",
+    "entityTableName": "batch",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "bli"
+}

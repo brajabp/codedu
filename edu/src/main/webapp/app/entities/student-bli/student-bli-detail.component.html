@@ -1,0 +1,56 @@
+
+<div *ngIf="student">
+    <h2><span jhiTranslate="eduApp.student.detail.title">Student</span> {{student.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eduApp.student.name">Name</span></dt>
+        <dd>
+            <span>{{student.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="eduApp.student.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'eduApp.Status.' + student.status}}">{{student.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="eduApp.student.createDate">Create Date</span></dt>
+        <dd>
+            <span>{{student.createDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eduApp.student.modDate">Mod Date</span></dt>
+        <dd>
+            <span>{{student.modDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eduApp.student.durationYear">Duration Year</span></dt>
+        <dd>
+            <span>{{student.durationYear}}</span>
+        </dd>
+        <dt><span jhiTranslate="eduApp.student.durationMonth">Duration Month</span></dt>
+        <dd>
+            <span>{{student.durationMonth}}</span>
+        </dd>
+        <dt><span jhiTranslate="eduApp.student.durationDay">Duration Day</span></dt>
+        <dd>
+            <span>{{student.durationDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="eduApp.student.organizationId">Organization Id</span></dt>
+        <dd>
+            <div *ngIf="student.organizationIdId">
+                <a [routerLink]="['/organization-bli', student.organizationIdId]">{{student.organizationIdId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'student-bli/'+ student.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

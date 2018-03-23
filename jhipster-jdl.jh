@@ -1,0 +1,176 @@
+// ORG
+entity Organization {
+	name String required,
+    status Status,
+    accountStatus AccountStatus,
+	createDate Instant,
+	modDate Instant
+}
+
+entity Division {
+	name String,
+    status Status,
+    accountStatus AccountStatus,
+	createDate Instant,
+	modDate Instant
+}
+
+entity Employee {
+	name String,
+    status Status,
+    jobType JobType,
+	createDate Instant,
+	modDate Instant,
+	joinDate Instant,
+    salary Integer,
+    phone String,
+    email String,
+    address String
+}
+
+entity Course {
+	name String,
+    status Status,
+	createDate Instant,
+	modDate Instant,
+    fee Long,
+	durationYear Integer,
+	durationMonth Integer,
+    durationDay Integer
+}
+
+entity Subject {
+	name String,
+    status Status,
+	createDate Instant,
+	modDate Instant,
+    fee Long,
+	durationYear Integer,
+	durationMonth Integer,
+    durationDay Integer
+}
+
+// ADMISSION
+entity Enquiry {
+    enquiryDate Instant,
+    comment String,
+    phone String,
+    email String,
+    address String
+}
+
+entity FollowUp {
+    followUpDate Instant,
+    comment String
+}
+
+entity Student {
+	name String,
+    status Status,
+	createDate Instant,
+	modDate Instant,
+	durationYear Integer,
+	durationMonth Integer,
+    durationDay Integer
+}
+
+entity Enroll {
+    accountStatus AccountStatus,
+    createDate Instant,
+	modDate Instant
+}
+
+// FINANCE
+entity Payment {
+    status Status,
+    amount Integer,
+    createDate Instant,
+	modDate Instant
+}
+
+// CLASSROOM
+entity Batch {
+    status Status,
+	createDate Instant,
+	modDate Instant,
+    startDate Integer,
+    endDate Integer,
+    sudentCapacity Integer
+}
+
+entity Schedule {
+    status Status,
+	createDate Instant,
+	modDate Instant,
+    plannedDate Integer,
+    plannedDuration Integer
+}
+
+entity Classroom {
+    status Status,
+	createDate Instant,
+	modDate Instant,
+    actualDate Integer,
+    actualDuration Integer,
+    sudentPresent Integer
+}
+
+entity ClassLog {
+    status Status,
+	createDate Instant,
+	modDate Instant,
+    actualDate Integer,
+    actualDuration Integer,
+    sudentPresent Integer,
+    logType LogType
+}
+
+enum Status {
+    ACTIVE, INACTIVE
+}
+
+enum AccountStatus {
+    PENDING, SUBSCRIBED, UNSUBSCRIBED
+}
+
+enum JobType {
+    TEACHER, ADMIN, RECEPTIONIST, MAINTAINER
+}
+
+enum LogType {
+    TEACHER_JOINED, STUDENT_JOINED, CLASS_NOTE, TODO, DONE
+}
+
+relationship OneToMany {
+	Organization{divisionId} to Division{organizationId},
+	Organization{paymentId} to Payment{organizationId},
+	Organization{enquiryId} to Enquiry{organizationId},
+	Organization{courseId} to Course{organizationId},
+	Organization{studentId} to Student{organizationId},
+	Organization{employeeId} to Employee{organizationId},
+	Enroll{paymentId} to Payment{enrollId},
+	Course{enrollId} to Enroll{courseId},
+	Student{enrollId} to Enroll{studentId},
+	Course{subjectId} to Subject{courseId},
+	Enquiry{followUpId} to FollowUp{enquiryId},
+	Subject{batchId} to Batch{subjectId},
+	Student{batchId} to Batch{studentId},
+	Employee{batchId} to Batch{employeeId},
+	Employee{followUpId} to FollowUp{employeeId},
+    Batch{scheduleId} to Schedule{batchId},
+    Batch{enrollId} to Enroll{batchId},
+    Schedule{classroomId} to Classroom{scheduleId},
+    Classroom{classLogId} to ClassLog{classroomId}
+}
+
+// Set pagination options
+paginate Enquiry, FollowUp, Enroll with infinite-scroll
+paginate Student, Batch with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+angularSuffix * with bli

@@ -1,0 +1,65 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "enrollId",
+            "otherEntityName": "enroll",
+            "otherEntityRelationshipName": "courseId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "subjectId",
+            "otherEntityName": "subject",
+            "otherEntityRelationshipName": "courseId"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "organizationId",
+            "otherEntityName": "organization",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "ACTIVE,INACTIVE"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "modDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fee",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "durationYear",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "durationMonth",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "durationDay",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180323025515",
+    "entityTableName": "course",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "bli"
+}

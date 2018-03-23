@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "enrollId",
+            "otherEntityName": "enroll",
+            "otherEntityRelationshipName": "studentId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "batchId",
+            "otherEntityName": "batch",
+            "otherEntityRelationshipName": "studentId"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "organizationId",
+            "otherEntityName": "organization",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Status",
+            "fieldValues": "ACTIVE,INACTIVE"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "modDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "durationYear",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "durationMonth",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "durationDay",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180323025519",
+    "entityTableName": "student",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "bli"
+}
